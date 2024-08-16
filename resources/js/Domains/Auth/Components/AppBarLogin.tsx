@@ -2,15 +2,22 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from '@inertiajs/react';
 import { grey } from '@mui/material/colors';
 import {
-    Box, Button, Dialog, DialogContent, DialogContentText, DialogTitle,
-    IconButton, InputAdornment, Stack, TextField
+    Box, Button, Dialog, DialogContent,
+    DialogContentText, DialogTitle, IconButton,
+    InputAdornment, Stack, TextField
 } from '@mui/material';
-import { AccountCircle, VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
+import {
+    AccountCircle,
+    VisibilityOffOutlined,
+    VisibilityOutlined
+} from '@mui/icons-material';
 import UIContext from '@/Contexts/UIContext';
 import LanguageContext from '@/Contexts/LanguageContext';
+import AuthContext from '@/Contexts/AuthContext';
 
 export default function AppBarLogin(props: any) {
     const lang = useContext(LanguageContext);
+    const { setUser } = useContext(AuthContext);
     const { loginDialogOpen, setLoginDialogOpen } = useContext(UIContext);
 
     // For future use
@@ -23,26 +30,31 @@ export default function AppBarLogin(props: any) {
 
     const handleLoginButtonClick = () => {
         setLoginDialogOpen(true);
+
+        // TODO: focus input
     }
 
     const handleCloseDialog = () => {
         setLoginDialogOpen(false);
+        reset();
+        clearErrors();
     }
 
     /** Form */
 
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, errors, reset, clearErrors } = useForm({
         email: '',
         password: ''
     });
 
-    const handleSubmit = e => {
+    const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
 
         post(route('login'), {
-            onSuccess: () => {
+            onSuccess: page => {
                 handleCloseDialog();
                 reset();
+                setUser(page.props.auth.user);
             }
         });
     };
@@ -85,8 +97,8 @@ export default function AppBarLogin(props: any) {
                         <TextField
                             required
                             value={data.email}
-                            // error={errors.email}
-                            // helperText={errors.email}
+                            error={errors.email}
+                            helperText={errors.email}
                             label={lang.email}
                             name="email"
                             size="small"
@@ -98,8 +110,8 @@ export default function AppBarLogin(props: any) {
                             required
                             // required={!localEnvironment}
                             value={data.password}
-                            // error={errors.password}
-                            // helperText={errors.password}
+                            error={errors.password}
+                            helperText={errors.password}
                             name="password"
                             label={lang.password}
                             type={showPassword ? "text" : "password"}

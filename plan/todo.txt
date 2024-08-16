@@ -1,6 +1,8 @@
 TODO:
     front end
-        add login menu to app bar
+        add auth provider
+        show when logged in on menu bar
+        add logout feature
 
     back end
         formalize auth for users and teammates
