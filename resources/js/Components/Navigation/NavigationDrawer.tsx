@@ -37,8 +37,6 @@ export default function NavigationDrawer(props: PageProps) {
 
 
 	useEffect(() => {
-		console.log(isDesktop)
-
 		if (!isDesktop && navigationDrawerOpen) {
 			setNavigationDrawerOpen(false);
 		}

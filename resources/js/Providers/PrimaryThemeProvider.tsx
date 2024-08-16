@@ -47,6 +47,7 @@ export default function PrimaryThemeProvider({ children }: AppContainerProps) {
 
             layouts: {
                 dashboard: {
+                    bottomAppBarHeight: '26px',
                     bottomNavigationHeight: '48px',
                     drawerWidth: '180px',
                     drawerRailWidth: '60px',

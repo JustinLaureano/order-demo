@@ -4,8 +4,6 @@ import { Head, useForm } from '@inertiajs/react';
 import PrimaryLogo from '@/Components/PrimaryLogo';
 
 export default function Clockin(props: any) {
-    console.log(props)
-
     const { data, setData, post, processing, errors, reset } = useForm({
         clock_number: '',
     });
