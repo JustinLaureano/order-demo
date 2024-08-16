@@ -1,0 +1,13 @@
+SQL Server connection:
+    - will need to add sql server to docker-compose config. copy
+
+
+Redis
+    Replication cluster on local docker-composer
+
+
+Logging
+    Setup logging with sentry
+
+
+look into docker swarm for high availability config

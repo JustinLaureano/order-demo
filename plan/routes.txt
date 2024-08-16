@@ -1,0 +1,28 @@
+User Stories
+    Production
+
+
+    IRM
+
+    Quality
+
+
+    Shipping
+
+
+    Receiving
+
+    Materials
+
+
+    Locations
+
+
+    Engineering
+
+    Support
+
+
+    Authorization
+
+
