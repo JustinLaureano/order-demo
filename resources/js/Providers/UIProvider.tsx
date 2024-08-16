@@ -1,16 +1,27 @@
 import React, { useMemo, useState } from 'react';
 import UIContext from '@/Contexts/UIContext';
 
-interface AppContainerProps {
+interface UIProviderProps {
     children: React.ReactNode;
 }
 
-export default function UIProvider({ children }: AppContainerProps) {
+export default function UIProvider({ children }: UIProviderProps) {
     const [navigationDrawerOpen, setNavigationDrawerOpen] = useState(true);
-    const value = useMemo(
-        () => ({ navigationDrawerOpen, setNavigationDrawerOpen }),
-        [navigationDrawerOpen]
-    )
+    const [loginDialogOpen, setLoginDialogOpen] = useState(false);
+
+    const defaultValue = {
+        navigationDrawerOpen,
+        setNavigationDrawerOpen,
+        loginDialogOpen,
+        setLoginDialogOpen,
+    }
+
+    const dependencies = [
+        loginDialogOpen,
+        navigationDrawerOpen
+    ];
+
+    const value = useMemo(() => defaultValue, dependencies)
 
     return (
         <UIContext.Provider value={value}>

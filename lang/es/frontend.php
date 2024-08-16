@@ -11,5 +11,7 @@ return [
     |
     */
 
+    'email' => 'correo',
+    'password' => 'Contraseña',
     'username' => 'Nombre de Usuario',
 ];

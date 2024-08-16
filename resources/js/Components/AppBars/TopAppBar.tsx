@@ -1,10 +1,9 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, Stack, Typography, useTheme,  Button } from '@mui/material';
+import { AppBar, Toolbar, Stack, Typography, useTheme } from '@mui/material';
 import { PageProps } from '@/types';
 import NavigationToggle from './NavigationToggle';
-import { AccountCircle } from '@mui/icons-material';
-import { grey } from '@mui/material/colors';
 import AppBarLogo from '../Logos/AppBarLogo';
+import AppBarLogin from '@/Domains/Auth/Components/AppBarLogin';
 
 export default function TopAppBar(props : PageProps) {
     const theme = useTheme();
@@ -59,17 +58,8 @@ export default function TopAppBar(props : PageProps) {
                             
                         }}
                     >
-                        <Box>
-                            <Button
-                                variant="text"
-                                startIcon={<AccountCircle sx={{ color: grey[700] }} />}
-                            >
-                                Login
-                            </Button>
-                        </Box>
-
+                        <AppBarLogin />
                     </Stack>
-
                 </Stack>
             </Toolbar>
         </AppBar>

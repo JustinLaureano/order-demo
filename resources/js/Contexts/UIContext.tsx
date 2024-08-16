@@ -1,9 +1,13 @@
 import { createContext } from "react";
 
-const UIContext = createContext({
+export const defaultUIContext = {
     navigationDrawerOpen: true,
+    setNavigationDrawerOpen: () => {},
 
-    setNavigationDrawerOpen: () => {}
-});
+    loginDialogOpen: false,
+    setLoginDialogOpen: () => {},
+}
+
+const UIContext = createContext(defaultUIContext);
 
 export default UIContext;

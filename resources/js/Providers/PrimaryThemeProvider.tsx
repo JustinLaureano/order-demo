@@ -3,11 +3,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import ColorModeContext from '@/Contexts/ColorModeContext';
 
-interface AppContainerProps {
+interface PrimaryThemeProps {
     children: React.ReactNode;
 }
 
-export default function PrimaryThemeProvider({ children }: AppContainerProps) {
+export default function PrimaryThemeProvider({ children }: PrimaryThemeProps) {
     const [mode, setMode] = useState('light');
     const colorMode = useMemo(
         () => ({
@@ -57,9 +57,12 @@ export default function PrimaryThemeProvider({ children }: AppContainerProps) {
 
             typography: {
                 h6: {
-                  fontSize: '1.125rem',
-                  fontWeight: 500,
-                  color: grey[800]
+                    fontSize: '1.125rem',
+                    fontWeight: 500,
+                    color: grey[800],
+                    ...(mode == 'dark' && {
+                        color: baseTheme.palette.common.white
+                    })
                 },
               },
         }),

@@ -45,4 +45,4 @@ require __DIR__.'/test.php';
 
 
 
- Route::get('/home', HomeController::class)->name('home');
+ Route::middleware('guest')->get('/home', HomeController::class)->name('home');

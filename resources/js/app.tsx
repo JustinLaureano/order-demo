@@ -23,7 +23,7 @@ createInertiaApp({
         const root = createRoot(el);
 
         root.render(
-            <AppContainer>
+            <AppContainer {...props}>
                 <App {...props} />
             </AppContainer>
         );
