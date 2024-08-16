@@ -1,6 +1,5 @@
 TODO:
     front end
-        navigation drawer should change to full page drawer on mobile
         on mobile display a bottom nav bar
         on desktop, create bottom app bar
 

@@ -1,10 +1,8 @@
-import * as React from 'react';
-import { grey } from '@mui/material/colors';
-import CssBaseline from '@mui/material/CssBaseline';
+import React from 'react';
 import { Box, Toolbar } from '@mui/material';
 import NavigationDrawer from '@/Components/Navigation/NavigationDrawer';
 import TopAppBar from '@/Components/AppBars/TopAppBar';
-import { PageProps } from '@/types';
+import BottomNavigationBar from '@/Components/Navigation/BottomNavigationBar';
 
 export default function DashboardLayout({ children, ...props }) {
     return (
@@ -20,9 +18,12 @@ export default function DashboardLayout({ children, ...props }) {
                 component="main"
                 sx={{ flexGrow: 1, px: 2, pt: 2 }}
             >
+                {/* This toolbar is just a spacer */}
                 <Toolbar variant="dense" />
                 {children}
             </Box>
+
+            <BottomNavigationBar />
         </Box>
     );
 }
