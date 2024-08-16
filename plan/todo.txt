@@ -1,8 +1,5 @@
 TODO:
     front end
-        on mobile display a bottom nav bar
-        on desktop, create bottom app bar
-
         add login menu to app bar
 
     back end

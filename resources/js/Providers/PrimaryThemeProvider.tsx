@@ -54,6 +54,14 @@ export default function PrimaryThemeProvider({ children }: AppContainerProps) {
                     topAppBarHeight: '48px'
                 }
             },
+
+            typography: {
+                h6: {
+                  fontSize: '1.125rem',
+                  fontWeight: 500,
+                  color: grey[800]
+                },
+              },
         }),
         [mode],
     );
