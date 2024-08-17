@@ -1,4 +1,4 @@
-# Breeze App
+# Order Demo
 
 ## Installation
 
@@ -6,7 +6,7 @@
 
 git clone <url>
 
-cd breeze-app
+cd order-demo
 
 docker run --rm \
     -u "$(id -u):$(id -g)" \

@@ -1,8 +1,9 @@
 TODO:
     front end
-        add auth provider
-        show when logged in on menu bar
         add logout feature
+        style login form
+        Create Minimal Centered Layout
+        add login and clockin pages
 
     back end
         formalize auth for users and teammates

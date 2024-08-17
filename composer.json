@@ -1,5 +1,5 @@
 {
-    "name": "laravel/breeze-app",
+    "name": "laravel/order-demo",
     "type": "project",
     "description": "The skeleton application for the Laravel framework that has implemented breeze as a starter kit.",
     "keywords": ["laravel", "framework"],
