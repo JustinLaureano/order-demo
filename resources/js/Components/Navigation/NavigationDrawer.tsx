@@ -42,6 +42,24 @@ export default function NavigationDrawer(props: PageProps) {
 		}
 	}, [isDesktop])
 
+	const ListItemWrapper = ({ link, children } : any) => {
+		if (navigationDrawerOpen) {
+			return (
+				<>{children}</>
+			)
+		}
+
+		return (
+			<Tooltip
+				title={link.label}
+				placement="right"
+				arrow
+			>
+				{children}
+			</Tooltip>
+		)
+	}
+
 	return (
 		<Drawer
 			variant={isDesktop ? 'permanent' : 'temporary'}
@@ -71,12 +89,7 @@ export default function NavigationDrawer(props: PageProps) {
 			<Box sx={{ overflow: 'hidden' }}>
 				<List>
 					{links.map((link, index) => (
-						<Tooltip
-							key={index}
-							title={link.label}
-							placement="right"
-							arrow
-						>
+						<ListItemWrapper link={link} key={index}>
 							<ListItem disablePadding >
 								<ListItemButton>
 									<ListItemIcon>
@@ -91,7 +104,7 @@ export default function NavigationDrawer(props: PageProps) {
 									/>
 								</ListItemButton>
 							</ListItem>
-						</Tooltip>
+						</ListItemWrapper>
 					))}
 				</List>
 

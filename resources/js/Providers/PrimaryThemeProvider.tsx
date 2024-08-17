@@ -24,12 +24,16 @@ export default function PrimaryThemeProvider({ children }: PrimaryThemeProps) {
         () => createTheme({
             palette: {
                 mode,
+                background: {
+                    default: '#10131c',
+                    paper: '#10131c'
+                },
                 ...(mode == 'light' && {
                     background: {
                         default: grey[50],
                         paper: grey[50]
                     }
-                })
+                }),
             },
 
             ...(mode == 'light' && {
