@@ -1,69 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useForm } from '@inertiajs/react';
+import React, { useContext } from 'react';
 import { grey } from '@mui/material/colors';
 import {
     Box, Button, Dialog, DialogContent,
-    DialogContentText, DialogTitle, IconButton,
-    InputAdornment, Stack, TextField
+    DialogContentText, DialogTitle
 } from '@mui/material';
-import {
-    AccountCircle,
-    VisibilityOffOutlined,
-    VisibilityOutlined
-} from '@mui/icons-material';
+import { AccountCircle } from '@mui/icons-material';
 import UIContext from '@/Contexts/UIContext';
 import LanguageContext from '@/Contexts/LanguageContext';
-import AuthContext from '@/Contexts/AuthContext';
+import LoginForm from './LoginForm';
 
 export default function AppBarLogin(props: any) {
     const lang = useContext(LanguageContext);
-    const { setUser } = useContext(AuthContext);
     const { loginDialogOpen, setLoginDialogOpen } = useContext(UIContext);
-
-    // For future use
-    const localEnvironment = props?.ziggy?.location.includes('localhost');
-    const [showPassword, setShowPassword] = useState(false);
-
-    /** Click Events */
-
-    const handleClickShowPassword = () => setShowPassword(show => !show);
 
     const handleLoginButtonClick = () => {
         setLoginDialogOpen(true);
-
-        // TODO: focus input
     }
 
     const handleCloseDialog = () => {
         setLoginDialogOpen(false);
-        reset();
-        clearErrors();
     }
-
-    /** Form */
-
-    const { data, setData, post, processing, errors, reset, clearErrors } = useForm({
-        email: '',
-        password: ''
-    });
-
-    const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
-        e.preventDefault();
-
-        post(route('login'), {
-            onSuccess: page => {
-                handleCloseDialog();
-                reset();
-                setUser(page.props.auth.user);
-            }
-        });
-    };
-
-    useEffect(() => {
-        return () => {
-            reset('password');
-        };
-    }, []);
 
     return (
         <>
@@ -88,57 +44,7 @@ export default function AppBarLogin(props: any) {
                         Yada ya
                     </DialogContentText>
 
-                    <Stack
-                        component="form"
-                        onSubmit={handleSubmit}
-                        spacing={2}
-                    >
-
-                        <TextField
-                            required
-                            value={data.email}
-                            error={errors.email}
-                            helperText={errors.email}
-                            label={lang.email}
-                            name="email"
-                            size="small"
-                            fullWidth
-                            onChange={e => setData('email', e.target.value)}
-                        />
-
-                        <TextField
-                            required
-                            // required={!localEnvironment}
-                            value={data.password}
-                            error={errors.password}
-                            helperText={errors.password}
-                            name="password"
-                            label={lang.password}
-                            type={showPassword ? "text" : "password"}
-                            size="small"
-                            fullWidth
-                            onChange={e => setData('password', e.target.value)}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            edge="end"
-                                            onClick={handleClickShowPassword}
-                                        >
-                                            {showPassword ? <VisibilityOutlined /> : <VisibilityOffOutlined />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                )
-                            }}
-                        />
-
-                        <Stack sx={{ pt: 2 }}>
-                            <Button type="submit" variant="contained" fullWidth>
-                                Login
-                            </Button>
-                        </Stack>
-                    </Stack>
+                    <LoginForm onLoginSuccess={handleCloseDialog} />
 
                 </DialogContent>
             </Dialog>

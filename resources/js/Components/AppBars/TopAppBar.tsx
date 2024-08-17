@@ -5,6 +5,7 @@ import NavigationToggle from './NavigationToggle';
 import AppBarLogo from '../Logos/AppBarLogo';
 import AppBarLogin from '@/Domains/Auth/Components/AppBarLogin';
 import AuthContext from '@/Contexts/AuthContext';
+import AppBarUser from '@/Domains/Auth/Components/AppBarUser';
 
 export default function TopAppBar(props : PageProps) {
     const theme = useTheme();
@@ -61,7 +62,7 @@ export default function TopAppBar(props : PageProps) {
                         }}
                     >
                         {
-                            user ? <div>{user.name}</div> : <AppBarLogin />
+                            user ? <AppBarUser /> : <AppBarLogin />
                         }
 
                     </Stack>

@@ -1,6 +1,7 @@
 TODO:
     front end
         add logout feature
+        logout redirects correctly and changes on app bar
         style login form
         Create Minimal Centered Layout
         add login and clockin pages
