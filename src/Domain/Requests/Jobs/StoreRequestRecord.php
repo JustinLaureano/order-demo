@@ -3,7 +3,7 @@
 namespace Domain\Requests\Jobs;
 
 use App\Events\RequestCreated;
-use App\Models\Request;
+use App\Repositories\RequestRepository;
 use Domain\Requests\DataTransferObjects\RequestData;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -26,9 +26,9 @@ class StoreRequestRecord implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle(RequestRepository $repository): void
     {
-        $request = Request::create($this->requestData->toArray());
+        $request = $repository->create($this->requestData);
 
         RequestCreated::dispatch($request);
     }

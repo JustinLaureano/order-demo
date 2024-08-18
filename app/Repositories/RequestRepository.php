@@ -1,11 +1,11 @@
 <?php
 
-namespace Domain\Requests\Services;
+namespace App\Repositories;
 
 use App\Models\Request;
 use Domain\Requests\DataTransferObjects\RequestData;
 
-class RequestsService
+class RequestRepository
 {
     public function create(RequestData $data) : Request
     {
