@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react';
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import DashboardLayout from '@/Layouts/DashboardLayout';
-import { Card, CardContent, CardHeader, Stack, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardHeader, Stack, Typography } from '@mui/material';
 import { toast } from 'react-toastify';
 import RequestForm from '@/Domains/Requests/Components/RequestForm';
 
-export default function Home(props: PageProps) {
+export default function Home({ recentRequests, ...props } : any) {
 
-    console.log(props.currentRequests)
+    console.log(recentRequests)
 
     useEffect(() => {
 
         window.Echo.channel('request-created')
             .listen('RequestCreated', (e: any) => {
                 toast(`A new request has been created`);
+
+                router.reload({ only: ['recentRequests'] })
             });
 
 
@@ -43,9 +45,15 @@ export default function Home(props: PageProps) {
                         title={"Recent"}
                     />
                     <CardContent>
-                        <Typography>
-                            Recent Requests Here
-                        </Typography>
+                    {
+                        recentRequests.data.slice(0, 5).map(request => (
+                            <Box>
+                                <Typography>
+                                    `{request.id} - Part: {request.part_id} - Location: {request.location_id}`
+                                </Typography>
+                            </Box>
+                        ))
+                    }
                     </CardContent>
                 </Card>
             </Stack>

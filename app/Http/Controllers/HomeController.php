@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Test;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
+use App\Repositories\RequestRepository;
 use Inertia\Inertia;
 
 class HomeController extends Controller
@@ -12,15 +10,10 @@ class HomeController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(RequestRepository $repository)
     {
-
-        $currentRequests = Cache::get('current_requests', function () {
-            return Test::latest()->paginate();
-        });
-
         return Inertia::render('Home', [
-            'currentRequests' => $currentRequests
+            'recentRequests' => $repository->getRecentRequests()
         ]);
     }
 }

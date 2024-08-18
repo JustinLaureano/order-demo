@@ -4,12 +4,14 @@ namespace Domain\Requests\Actions;
 
 use Domain\Requests\DataTransferObjects\RequestData;
 use Domain\Requests\Jobs\StoreRequestRecord;
-use Illuminate\Support\Facades\Log;
+use Domain\Requests\Jobs\UpsertRecentRequestsCache;
 
 class CreateRequestAction
 {
     public function handle(RequestData $requestData)
     {
         StoreRequestRecord::dispatch($requestData);
+
+        UpsertRecentRequestsCache::dispatch();
     }
 }

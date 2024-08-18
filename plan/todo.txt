@@ -19,24 +19,5 @@ TODO:
 
 
 
-
-migration - done
-    requests
-    parts
-    locations
-
-model
-    make - done
-    relationships - done
-
-routes
-
-event
-
-listener
-
-job
-
-factory ?
-
-seeder ?
+request demo
+    cache request list on job
