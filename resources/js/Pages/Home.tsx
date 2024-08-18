@@ -53,7 +53,7 @@ export default function Home(props: PageProps) {
 
 
             <Stack direction="row" spacing={2}>
-                {['Requests', 'Sort', 'Materials'].map((title, index) => (
+                {['Shipping', 'Sort', 'Materials'].map((title, index) => (
                     <Card key={index} sx={{ flexGrow: 1 }}>
                         <CardHeader
                             title={title}
