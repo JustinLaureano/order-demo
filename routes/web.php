@@ -5,11 +5,6 @@ use App\Models\Test;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome');
-});
-
-
 Route::get('/dashboard', function () {
         return Inertia::render('Dashboard', [
             'tests' => Test::latest()->paginate()
@@ -34,6 +29,7 @@ Route::get('/teammates', function () {
 require __DIR__.'/auth.php';
 
 require __DIR__.'/test.php';
+require __DIR__.'/orders.php';
 
 
 /**
@@ -45,4 +41,4 @@ require __DIR__.'/test.php';
 
 
 
- Route::middleware('guest')->get('/home', HomeController::class)->name('home');
+ Route::get('/', HomeController::class)->name('home');

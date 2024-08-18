@@ -15,3 +15,28 @@ TODO:
 
     backend
         install roles and permissions and get working for users
+
+
+
+
+
+migration - done
+    requests
+    parts
+    locations
+
+model
+    make - done
+    relationships - done
+
+routes
+
+event
+
+listener
+
+job
+
+factory ?
+
+seeder ?
