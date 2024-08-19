@@ -10,7 +10,7 @@ export default function AppBarUser(props: any) {
     const lang = useContext(LanguageContext);
     const { user } = useContext(AuthContext);
 
-    const [userMenuEl, setUserMenuEl] = useState(null);
+    const [userMenuEl, setUserMenuEl] = useState<EventTarget & HTMLElement | null>(null);
     const openUserMenu = Boolean(userMenuEl);
 
     const handleUserButtonClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -33,7 +33,7 @@ export default function AppBarUser(props: any) {
                     startIcon={<AccountCircle sx={{ color: grey[700] }} />}
                     onClick={handleUserButtonClick}
                 >
-                    {user.name}
+                    {user?.name}
                 </Button>
             </Box>
 

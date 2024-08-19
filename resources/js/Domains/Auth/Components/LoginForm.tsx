@@ -11,8 +11,14 @@ import {
 import LanguageContext from '@/Contexts/LanguageContext';
 import AuthContext from '@/Contexts/AuthContext';
 
+const FormStack = ({ children, ...props } : any) => {
+    return (
+        <Stack {...props}>{children}</Stack>
+    )
+}
+
 export default function LoginForm({ onLoginSuccess = () => {} }: any) {
-    const lang = useContext(LanguageContext);
+    const lang : Record<string, any> = useContext(LanguageContext);
     const { setUser } = useContext(AuthContext);
 
     // For future use
@@ -31,7 +37,7 @@ export default function LoginForm({ onLoginSuccess = () => {} }: any) {
         e.preventDefault();
 
         post(route('login'), {
-            onSuccess: page => {
+            onSuccess: (page : Record<string, any>) => {
                 reset();
                 clearErrors();
                 setUser(page.props.auth.user);
@@ -50,7 +56,7 @@ export default function LoginForm({ onLoginSuccess = () => {} }: any) {
     }, []);
 
     return (
-        <Stack
+        <FormStack
             component="form"
             onSubmit={handleSubmit}
             spacing={2}
@@ -59,7 +65,7 @@ export default function LoginForm({ onLoginSuccess = () => {} }: any) {
             <TextField
                 required
                 value={data.email}
-                error={errors.email}
+                error={Boolean(errors.email)}
                 helperText={errors.email}
                 label={lang.email}
                 name="email"
@@ -72,7 +78,7 @@ export default function LoginForm({ onLoginSuccess = () => {} }: any) {
                 required
                 // required={!localEnvironment}
                 value={data.password}
-                error={errors.password}
+                error={Boolean(errors.password)}
                 helperText={errors.password}
                 name="password"
                 label={lang.password}
@@ -100,6 +106,6 @@ export default function LoginForm({ onLoginSuccess = () => {} }: any) {
                     Login
                 </Button>
             </Stack>
-        </Stack>
+        </FormStack>
     );
 }
