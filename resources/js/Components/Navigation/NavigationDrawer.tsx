@@ -9,10 +9,10 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import ColorModeContext from '@/Contexts/ColorModeContext';
 import UIContext from '@/Contexts/UIContext';
 
-export default function NavigationDrawer(props: PageProps) {
+export default function NavigationDrawer(props: Record<string, any>) {
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-	const colorMode = React.useContext(ColorModeContext);
+	const colorMode = useContext(ColorModeContext);
 	const { navigationDrawerOpen, setNavigationDrawerOpen } = useContext(UIContext);
 
 	const drawerWidth = navigationDrawerOpen

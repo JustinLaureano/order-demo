@@ -5,9 +5,12 @@ import TopAppBar from '@/Components/AppBars/TopAppBar';
 import BottomNavigationBar from '@/Components/Navigation/BottomNavigationBar';
 import BottomAppBar from '@/Components/AppBars/BottomAppBar';
 
-export default function DashboardLayout({ children, ...props }) {
+interface DashboardLayoutProps {
+    children: React.ReactNode;
+}
+
+export default function DashboardLayout({ children, ...props } : DashboardLayoutProps) {
     const theme = useTheme();
-	const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
     return (
         <Box sx={{

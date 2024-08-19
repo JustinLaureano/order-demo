@@ -7,7 +7,7 @@ import AppBarLogin from '@/Domains/Auth/Components/AppBarLogin';
 import AuthContext from '@/Contexts/AuthContext';
 import AppBarUser from '@/Domains/Auth/Components/AppBarUser';
 
-export default function TopAppBar(props : PageProps) {
+export default function TopAppBar(props : Record<string, any>) {
     const theme = useTheme();
     const { user } = useContext(AuthContext);
 

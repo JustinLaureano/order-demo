@@ -3,10 +3,16 @@ import AuthContext from '@/Contexts/AuthContext';
 
 interface AuthProviderProps {
     children: React.ReactNode;
-    initialPage: Record<string, any>;
+    initialPage?: Record<string, any>;
 }
 
-export default function AuthProvider({ children, initialPage, ...props }: AuthProviderProps) {
+const defaultInitialPage = { props: {} }
+
+export default function AuthProvider({
+    children,
+    initialPage = defaultInitialPage,
+    ...props
+}: AuthProviderProps) {
     const [user, setUser] = useState(initialPage.props?.auth.user || null);
 
     const defaultValue = {

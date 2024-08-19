@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Paper, Stack, Typography, useTheme } from '@mui/material';
-import { PageProps } from '@/types';
 
 declare module '@mui/material' {
     interface Theme {
@@ -8,12 +7,11 @@ declare module '@mui/material' {
     }
 }
 
-export default function BottomAppBar(props : PageProps) {
+export default function BottomAppBar(props : Record<string, any>) {
     const theme = useTheme();
 
     return (
         <Paper
-            position="fixed"
             elevation={0}
             sx={{
                 display: 'none',
@@ -29,7 +27,6 @@ export default function BottomAppBar(props : PageProps) {
                     display: 'block'
                 }
             }}
-
         >
             <Stack
                 direction="row"

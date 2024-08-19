@@ -3,10 +3,16 @@ import LanguageContext from '@/Contexts/LanguageContext';
 
 interface LanguageProviderProps {
     children: React.ReactNode;
-    initialPage: Record<string, any>;
+    initialPage?: Record<string, any>;
 }
 
-export default function LanguageProvider({ children, initialPage, ...props }: LanguageProviderProps) {
+const defaultInitialPage = { props: {} }
+
+export default function LanguageProvider({
+    children,
+    initialPage = defaultInitialPage,
+    ...props
+}: LanguageProviderProps) {
 
     return (
         <LanguageContext.Provider value={initialPage.props?.lang || {}}>
