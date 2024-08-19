@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Models\Request;
-use Domain\Requests\Events\RequestCreated;
+use App\Domain\Requests\Events\RequestCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Cache;

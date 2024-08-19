@@ -23,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withEvents(discover: [
-        __DIR__.'/../src/Domain/Requests/Listeners',
+        __DIR__.'/../app/Domain/Requests/Listeners',
     ])
     ->withExceptions(function (Exceptions $exceptions) {
         //

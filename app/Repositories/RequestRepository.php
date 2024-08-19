@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Request;
-use Domain\Requests\DataTransferObjects\RequestData;
+use App\Domain\Requests\DataTransferObjects\RequestData;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Cache;
 

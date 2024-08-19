@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Production\Actions;
+namespace App\Domain\Production\Actions;
 
 use App\Exceptions\NotImplementedException;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Analytics\Actions;
+namespace App\Domain\Analytics\Actions;
 
 use App\Exceptions\NotImplementedException;
 

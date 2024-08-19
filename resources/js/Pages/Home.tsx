@@ -10,14 +10,12 @@ export default function Home({ recentRequests, ...props } : any) {
     console.log(recentRequests)
 
     useEffect(() => {
-
         window.Echo.channel('request-created')
-            .listen('RequestCreated', (e: any) => {
+            .listen('.requests.created', (e: any) => {
                 toast(`A new request has been created`);
 
                 router.reload({ only: ['recentRequests'] })
             });
-
 
         return () => {
             window.Echo.leave('request-created')
@@ -48,7 +46,7 @@ export default function Home({ recentRequests, ...props } : any) {
                         recentRequests.data.slice(0, 5).map((request : Record<string, any>) => (
                             <Box>
                                 <Typography>
-                                    `{request.id} - Part: {request.part_id} - Location: {request.location_id}`
+                                    {request.id} - Part: {request.part_id} - Location: {request.location_id}
                                 </Typography>
                             </Box>
                         ))
@@ -56,8 +54,6 @@ export default function Home({ recentRequests, ...props } : any) {
                     </CardContent>
                 </Card>
             </Stack>
-
-
 
             <Stack direction="row" spacing={2}>
                 {['Shipping', 'Sort', 'Materials'].map((title, index) => (

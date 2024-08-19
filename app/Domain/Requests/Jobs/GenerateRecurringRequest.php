@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Domain\Requests\Jobs;
 
-use App\Events\SkidMoved;
-use App\Models\Test;
-use App\Models\User;
+use App\Domain\Requests\Actions\CreateRequestAction;
+use App\Domain\Requests\DataTransferObjects\RequestData;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class CreateTest implements ShouldQueue
+class GenerateRecurringRequest implements ShouldQueue
 {
     use Queueable;
 
@@ -26,12 +25,13 @@ class CreateTest implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle(CreateRequestAction $action): void
     {
-        $test = User::findOrFail(1)->test()->create([
-            'text' => fake()->text()
-        ]);
+        $request = new RequestData(
+            part_id: 1,
+            location_id: 2
+        );
 
-        SkidMoved::dispatch($test);
+        $action->handle($request);
     }
 }

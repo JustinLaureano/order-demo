@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Requests;
 
 use App\Http\Controllers\Controller;
-use Domain\Requests\Actions\CreateRequestAction;
-use Domain\Requests\DataTransferObjects\RequestData;
+use App\Domain\Requests\Actions\CreateRequestAction;
+use App\Domain\Requests\DataTransferObjects\RequestData;
 
 class CreateRequestController extends Controller
 {

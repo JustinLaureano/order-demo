@@ -1,13 +1,6 @@
 <?php
 
-use App\Jobs\CreateTest;
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use App\Domain\Requests\Jobs\GenerateRecurringRequest;
 use Illuminate\Support\Facades\Schedule;
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote')->hourly();
-
-
-Schedule::job(new CreateTest)->everyMinute();
+Schedule::job(new GenerateRecurringRequest)->everyMinute();

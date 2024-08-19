@@ -1,23 +1,24 @@
 <?php
 
-namespace Domain\Requests\Jobs;
+namespace App\Domain\Requests\Jobs;
 
+use App\Domain\Requests\Events\RequestCreated;
 use App\Repositories\RequestRepository;
+use App\Domain\Requests\DataTransferObjects\RequestData;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Cache;
 
-class UpsertRecentRequestsCache implements ShouldQueue
+class StoreRequestRecord implements ShouldQueue
 {
     use Queueable;
 
     /**
      * Create a new job instance.
      */
-    public function __construct()
+    public function __construct(public RequestData $requestData)
     {
         //
     }
@@ -27,6 +28,8 @@ class UpsertRecentRequestsCache implements ShouldQueue
      */
     public function handle(RequestRepository $repository): void
     {
-        Cache::set('recent_requests', $repository->getLatestPaginated());
+        $request = $repository->create($this->requestData);
+
+        RequestCreated::dispatch($request);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Production\DataTransferObjects;
+namespace App\Domain\Production\DataTransferObjects;
 
 use App\Exceptions\NotImplementedException;
 
