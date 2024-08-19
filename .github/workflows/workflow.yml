@@ -28,6 +28,10 @@ jobs:
         run: |
           mkdir -p database
           touch database/database.sqlite
+      - name: install npm 
+        run:  npm install
+      - name: run npm 
+        run:  npm run build
       - name: Test
         env:
           DB_CONNECTION: sqlite
