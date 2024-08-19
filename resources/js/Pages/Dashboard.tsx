@@ -1,6 +1,5 @@
-import { Link, Head, router } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 import GuestLayout from '@/Layouts/GuestLayout';
-import { PageProps } from '@/types';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -66,14 +65,6 @@ export default function Dashboard({ auth, tests, ...rest } : Props) {
                 <div className="pt-12">
                     <button onClick={moveSkid} className="border border-black p-1 rounded">Move Skid</button>
                 </div>
-
-                {
-                    tests.data.map(test => (
-                        <div key={test.id} className="pt-6 px-6 border mx-6 my-4">
-                            {test.id}: ({test.user_id}) {test.text}
-                        </div>
-                    ))
-                }
 
 
             </div>

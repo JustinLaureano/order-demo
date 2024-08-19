@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { PageProps } from '@/types';
 import {
 	Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton,
 	ListItemIcon, ListItemText, Toolbar, Tooltip, useMediaQuery, useTheme
@@ -97,10 +96,6 @@ export default function NavigationDrawer(props: Record<string, any>) {
 									</ListItemIcon>
 									<ListItemText
 										primary={link.label}
-										primaryTypographyProps={{
-											fontWeight: 'medium',
-											variant: 'navLabel',
-										}}
 									/>
 								</ListItemButton>
 							</ListItem>

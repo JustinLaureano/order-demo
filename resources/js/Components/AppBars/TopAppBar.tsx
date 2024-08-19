@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AppBar, Toolbar, Stack, Typography, useTheme } from '@mui/material';
-import { PageProps } from '@/types';
 import NavigationToggle from './NavigationToggle';
 import AppBarLogo from '../Logos/AppBarLogo';
 import AppBarLogin from '@/Domains/Auth/Components/AppBarLogin';

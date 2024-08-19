@@ -1,8 +1,7 @@
 import { Head } from '@inertiajs/react';
-import { PageProps } from '@/types';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 
-export default function TestIndex(props: PageProps) {
+export default function TestIndex(props: Record<string, any>) {
 
     return (
         <DashboardLayout>

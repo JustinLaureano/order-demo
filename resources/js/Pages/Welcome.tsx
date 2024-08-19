@@ -1,8 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
-import { PageProps } from '@/types';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 
-export default function Welcome(props: PageProps) {
+export default function Welcome(props: Record<string, any>) {
   
     return (
         <DashboardLayout>

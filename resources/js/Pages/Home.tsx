@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Head, router } from '@inertiajs/react';
-import { PageProps } from '@/types';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import { Box, Card, CardContent, CardHeader, Stack, Typography } from '@mui/material';
 import { toast } from 'react-toastify';
