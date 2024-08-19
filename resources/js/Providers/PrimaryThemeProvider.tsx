@@ -2,13 +2,24 @@ import React, { useMemo, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import ColorModeContext from '@/Contexts/ColorModeContext';
+import { PaletteMode } from '@mui/material';
+
+declare module '@mui/material' {
+    interface Theme {
+        layouts?: any;
+    }
+
+    interface ThemeOptions {
+        layouts?: any;
+    }
+}
 
 interface PrimaryThemeProps {
     children: React.ReactNode;
 }
 
 export default function PrimaryThemeProvider({ children }: PrimaryThemeProps) {
-    const [mode, setMode] = useState('light');
+    const [mode, setMode] = useState<PaletteMode>('light');
     const colorMode = useMemo(
         () => ({
             toggleColorMode: () => {

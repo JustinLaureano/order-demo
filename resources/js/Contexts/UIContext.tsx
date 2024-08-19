@@ -1,5 +1,13 @@
 import { createContext } from "react";
 
+type UIContextType = {
+    navigationDrawerOpen: boolean;
+    setNavigationDrawerOpen: (navigationDrawerOpen: boolean) => void;
+
+    loginDialogOpen: boolean;
+    setLoginDialogOpen: (navigationDrawerOpen: boolean) => void;
+}
+
 export const defaultUIContext = {
     navigationDrawerOpen: true,
     setNavigationDrawerOpen: () => {},
@@ -8,6 +16,6 @@ export const defaultUIContext = {
     setLoginDialogOpen: () => {},
 }
 
-const UIContext = createContext(defaultUIContext);
+const UIContext = createContext<UIContextType>(defaultUIContext);
 
 export default UIContext;

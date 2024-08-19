@@ -1,6 +1,15 @@
 import { createContext } from "react";
 
-const AuthContext = createContext({
+interface User {
+    [key: string]: any;
+}
+
+type AuthContextType = {
+    user: User | null;
+    setUser: (user: User | null) => void;
+}
+
+const AuthContext = createContext<AuthContextType>({
     user: null,
     setUser: () => {},
 });

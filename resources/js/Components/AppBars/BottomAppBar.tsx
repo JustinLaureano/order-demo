@@ -2,6 +2,12 @@ import React from 'react';
 import { Box, Paper, Stack, Typography, useTheme } from '@mui/material';
 import { PageProps } from '@/types';
 
+declare module '@mui/material' {
+    interface Theme {
+        layouts?: any;
+    }
+}
+
 export default function BottomAppBar(props : PageProps) {
     const theme = useTheme();
 

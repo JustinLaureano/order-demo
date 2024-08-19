@@ -1,14 +1,15 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import LanguageContext from '@/Contexts/LanguageContext';
 
 interface LanguageProviderProps {
     children: React.ReactNode;
+    initialPage: Record<string, any>;
 }
 
-export default function LanguageProvider({ children, ...props }: LanguageProviderProps) {
+export default function LanguageProvider({ children, initialPage, ...props }: LanguageProviderProps) {
 
     return (
-        <LanguageContext.Provider value={props.initialPage.props?.lang || {}}>
+        <LanguageContext.Provider value={initialPage.props?.lang || {}}>
             {children}
         </LanguageContext.Provider>
     );
