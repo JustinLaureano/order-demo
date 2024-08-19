@@ -5,6 +5,13 @@ import {
     Button, Stack, Typography
 } from '@mui/material';
 import LanguageContext from '@/Contexts/LanguageContext';
+import { StackProps } from '@mui/material/Stack';
+
+const FormStack = ({ children, ...props } : any) => {
+    return (
+        <Stack {...props}>{children}</Stack>
+    )
+}
 
 export default function RequestForm({ onSubmitSuccess = () => {} }: any) {
     const lang = useContext(LanguageContext);
@@ -26,7 +33,7 @@ export default function RequestForm({ onSubmitSuccess = () => {} }: any) {
     };
 
     return (
-        <Stack
+        <FormStack
             component="form"
             onSubmit={handleSubmit}
             spacing={2}
@@ -41,6 +48,6 @@ export default function RequestForm({ onSubmitSuccess = () => {} }: any) {
                     Create Request
                 </Button>
             </Stack>
-        </Stack>
+        </FormStack>
     );
 }
