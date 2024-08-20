@@ -18,6 +18,7 @@ jobs:
           MYSQL_DATABASE: testing
           MYSQL_ROOT_HOST: '%'
           MYSQL_ROOT_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: 1
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping"
@@ -44,4 +45,6 @@ jobs:
       - name: run npm 
         run:  npm run build
       - name: Test
+        env:
+          DB_HOST: 127.0.0.1
         run: php artisan test
