@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Domain\Requests\Listeners;
 
 use App\Models\Request;
 use App\Domain\Requests\Events\RequestCreated;
