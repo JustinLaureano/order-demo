@@ -43,7 +43,8 @@ jobs:
       - name: run npm 
         run:  npm run build
       - name: Test
-        # env:
-        #   DB_CONNECTION: sqlite
-        #   DB_DATABASE: database/database.sqlite
+        env:
+          DB_HOST: 127.0.0.1
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
         run: php artisan test
