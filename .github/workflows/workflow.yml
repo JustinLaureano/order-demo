@@ -44,6 +44,4 @@ jobs:
       - name: run npm 
         run:  npm run build
       - name: Test
-        env:
-          DB_HOST: 127.0.0.1
         run: php artisan test
